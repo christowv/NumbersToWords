@@ -25,22 +25,27 @@ namespace NumbersToWords
         public MainWindow()
         {
             InitializeComponent();
+            languageComboBox.ItemsSource = Enum.GetValues(typeof(ReplaceFormats));
+            languageComboBox.SelectedIndex = 0;
         }
 
-        private void ButtonClick(object sender, RoutedEventArgs e)
+        private void TextChanged(object sender, RoutedEventArgs e)
         {
-            int num = Convert.ToInt32(textBox1.Text);
-            TranslateLanguages lang = (TranslateLanguages) Enum.Parse(typeof(TranslateLanguages), ConvertLanguage);
-            string words = Translator.ToWords(num, lang);
+            string output = "";
+            string input = textBoxInput.Text;
 
-            textBox2.Text = words;
+            if (input != "")
+            {
+                ReplaceFormats format = (ReplaceFormats) languageComboBox.SelectedItem;
+                output = Replacer.Replace(input, format);
+            }
+
+            textBoxOutput.Text = output;
         }
 
-        private void LanguageChecked(object sender, RoutedEventArgs e)
+        private void ComboBoxChanged(object sender, RoutedEventArgs e)
         {
-            RadioButton pressed = (RadioButton) sender;
-            ConvertLanguage = pressed.Content.ToString();
-            button1.IsEnabled = true;
+            TextChanged(sender, e);
         }
     }
 }

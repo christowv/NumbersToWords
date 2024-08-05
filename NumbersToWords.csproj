@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConverterFactory.cs" />
+    <Compile Include="Converters\EnglishConverter.cs" />
+    <Compile Include="Converters\RomanConverter.cs" />
+    <Compile Include="Converters\RussianConverter.cs" />
+    <Compile Include="SplittedNumber.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,7 +68,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Translator.cs" />
+    <Compile Include="IConverter.cs" />
+    <Compile Include="Replacer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
