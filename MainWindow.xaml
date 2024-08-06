@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumbersToWords"
         mc:Ignorable="d"
-        Title="NumbersToWords" Height="250" Width="450" ResizeMode="CanMinimize">
+        Title="NumbersToWords" Height="300" Width="550" ResizeMode="CanMinimize">
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions >
             <RowDefinition></RowDefinition>

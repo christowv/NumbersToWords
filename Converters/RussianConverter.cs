@@ -25,12 +25,49 @@ namespace NumbersToWords.Converters
 
             if (number.millions > 0)
             {
-                words += Convert(number.millions.ToString()) + "миллионов ";
+                string millionsString = number.millions.ToString();
+                words += Convert(millionsString);
+
+                SplittedNumber displaced = new SplittedNumber(millionsString);
+
+                if (displaced.units == 1 && displaced.tens != 1)
+                {
+                    words += " миллион ";
+                }
+                else if (displaced.units >= 2 && displaced.units <= 4 && displaced.tens != 1)
+                {
+                    words += " миллиона ";
+                }
+                else
+                {
+                    words += " миллионов ";
+                }
             }
 
             if (number.thousands > 0)
             {
-                words += Convert(number.thousands.ToString()) + "тысяч ";
+                string thousandsString = number.thousands.ToString();
+
+                string[] splitted = Convert(thousandsString).Split();
+                string lastWord = splitted[splitted.Length - 1];
+                lastWord = lastWord.Replace("один", "одна").Replace("два", "две");
+                splitted[splitted.Length-1] = lastWord;
+                words += string.Join(" ", splitted);
+
+                SplittedNumber displaced = new SplittedNumber(thousandsString);
+
+                if (displaced.units == 1 && displaced.tens != 1)
+                {
+                    words += " тысяча ";
+                }
+                else if (displaced.units >= 2 && displaced.units <= 4 && displaced.tens != 1)
+                {
+                    words += " тысячи ";
+                }
+                else
+                {
+                    words += " тысяч ";
+                }
             }
 
             if (number.hundreds > 0)
@@ -54,7 +91,7 @@ namespace NumbersToWords.Converters
                 }
             }
 
-            return words;
+            return words.Trim();
         }
     }
 }

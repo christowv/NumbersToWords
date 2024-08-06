@@ -44,6 +44,11 @@ namespace NumbersToWords
                             break;
                         }
 
+                        if (myChar == ' ')
+                        {
+                            continue; 
+                        }
+
                         if (!char.IsDigit(myChar))
                         {
                             i--;

@@ -24,12 +24,12 @@ namespace NumbersToWords.Converters
 
             if (number.millions > 0)
             {
-                words += Convert(number.millions.ToString()) + "million ";
+                words += Convert(number.millions.ToString()) + " million ";
             }
 
             if (number.thousands > 0)
             {
-                words += Convert(number.thousands.ToString()) + "thousand ";
+                words += Convert(number.thousands.ToString()) + " thousand ";
             }
 
             if (number.hundreds > 0)
@@ -58,7 +58,7 @@ namespace NumbersToWords.Converters
                 }
             }
 
-            return words;
+            return words.Trim();
         }
     }
 }
